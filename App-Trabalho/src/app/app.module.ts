@@ -6,12 +6,21 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { SearchCityService } from 'src/domain/services/search-city-service';
+import { FakeCityRepository } from 'src/data/fake/fake-city-repository';
+
+const createSearchCityService = () => {
+  return new SearchCityService(new FakeCityRepository());
+};
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    { provide: SearchCityService, useFactory: createSearchCityService },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
