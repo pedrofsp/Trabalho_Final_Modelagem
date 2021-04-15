@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { City } from 'src/domain/entities/city';
 import { SearchCityService } from 'src/domain/services/search-city-service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +13,10 @@ export class HomePage {
   hasError: boolean = false;
   errorMessage: string;
 
-  constructor(private readonly searchCity: SearchCityService) {}
+  constructor(
+    private readonly searchCity: SearchCityService,
+    private readonly router: Router
+  ) {}
 
   async onSearch(query: string) {
     try {
@@ -22,5 +26,10 @@ export class HomePage {
       this.hasError = true;
       this.errorMessage = error.message;
     }
+  }
+
+  onSelectCity(cityId: number) {
+    alert('onSelectCity do home.ts, cityId: ' + cityId);
+    this.router.navigateByUrl('/weather/${cityId}');
   }
 }

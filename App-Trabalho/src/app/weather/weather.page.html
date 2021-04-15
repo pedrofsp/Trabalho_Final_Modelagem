@@ -10,14 +10,14 @@
   <ion-grid>
     <ion-row class="ion-align-items-center">
       <ion-col class="ion-text-center">
-        <p>Lavras | Quinta, 04/03</p>
+        <p>{{weather.city.name}} | {{currentDate}}</p>
         <div class="temperature">
-          12<sup><small>ºC</small></sup>
+          {{weather.currentTemp}<sup><small>ºC</small></sup>
         </div>
         <div class="condition">
           <img src="assets/tempestade.png" alt="" />
-          <h3>TEMPESTADE</h3>
-          <p>50% | 30%</p>
+          <h3>{{weather.details[0].condition}}</h3>
+          <p>{{weather.details[0].pop}}% | {{weather.details[0].humidity}}%</p>
         </div>
         <ion-button color="success" (click)="onSeeDetails()"
           >Ver Detalhes</ion-button

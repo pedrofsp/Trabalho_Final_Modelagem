@@ -12,53 +12,29 @@
 <ion-content>
   <ion-grid>
     <ion-row>
-      <ion-col class="ion-text-center">
+      <ion-col
+        *ngFor="let weather of weatherDetails; let i = index"
+        class="ion-text-center"
+      >
         <img src="assets/tempestade.png" alt="" />
       </ion-col>
       <ion-col class="ion-text-center">
-        <p><strong>05/03</strong><br /><small>Tempestade</small></p>
-      </ion-col>
-      <ion-col class="ion-text-center">
         <p>
-          18 <sup><small>ºC</small></sup>
+          <strong>{{ daysAfterToday(i) | date: "dd/MM" }}</strong
+          ><br /><small>{{ weather.condition }}</small>
         </p>
       </ion-col>
       <ion-col class="ion-text-center">
-        <p>50%<br />30%</p>
-      </ion-col>
-    </ion-row>
-
-    <ion-row>
-      <ion-col class="ion-text-center">
-        <img src="assets/tempestade.png" alt="" />
-      </ion-col>
-      <ion-col class="ion-text-center">
-        <p><strong>05/03</strong><br /><small>Tempestade</small></p>
-      </ion-col>
-      <ion-col class="ion-text-center">
         <p>
-          18 <sup><small>ºC</small></sup>
+          {{ weather.minTemp }} <sup><small>ºC</small></sup
+          ><br />{{ weather.maxTemp }}<sup><small>ºC</small></sup>
         </p>
       </ion-col>
       <ion-col class="ion-text-center">
-        <p>50%<br />30%</p>
-      </ion-col>
-    </ion-row>
-
-    <ion-row>
-      <ion-col class="ion-text-center">
-        <img src="assets/tempestade.png" alt="" />
-      </ion-col>
-      <ion-col class="ion-text-center">
-        <p><strong>05/03</strong><br /><small>Tempestade</small></p>
-      </ion-col>
-      <ion-col class="ion-text-center">
         <p>
-          18 <sup><small>ºC</small></sup>
+          {{ weather.pop }}% <br />
+          {{ weather.humidity }}%
         </p>
-      </ion-col>
-      <ion-col class="ion-text-center">
-        <p>50%<br />30%</p>
       </ion-col>
     </ion-row>
   </ion-grid>
