@@ -17,7 +17,6 @@ export class CityDetailsComponent implements OnInit {
   ngOnInit() {}
 
   onClick() {
-    alert('onClick do CityDetailsComponent');
     this.selectCity.emit(this.id);
   }
 }

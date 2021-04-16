@@ -1,4 +1,4 @@
-<ion-harder class="ion-no-border">
+<ion-header class="ion-no-border">
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-button (click)="onClose()">
@@ -7,20 +7,17 @@
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
-</ion-harder>
+</ion-header>
 
 <ion-content>
-  <ion-grid>
-    <ion-row>
-      <ion-col
-        *ngFor="let weather of weatherDetails; let i = index"
-        class="ion-text-center"
-      >
+  <ion-grid *ngIf="weatherDetails">
+    <ion-row *ngFor="let weather of weatherDetails; let i = index">
+      <ion-col class="ion-text-center">
         <img src="assets/tempestade.png" alt="" />
       </ion-col>
       <ion-col class="ion-text-center">
         <p>
-          <strong>{{ daysAfterToday(i) | date: "dd/MM" }}</strong
+          <strong>{{ daysAfterToday(i) | date:"dd/MM" }}</strong
           ><br /><small>{{ weather.condition }}</small>
         </p>
       </ion-col>

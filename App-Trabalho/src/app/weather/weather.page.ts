@@ -44,7 +44,7 @@ export class WeatherPage {
     const day = today.getDate().toString().padStart(2, '0');
     const month = (today.getMonth() + 1).toString().padStart(2, '0');
 
-    return '${weekDays[today.getDay()]}, ${day}/${month}';
+    return `${weekDays[today.getDay()]}, ${day}/${month}`;
   }
 
   async loadWeather(cityId: number) {
@@ -61,7 +61,7 @@ export class WeatherPage {
     const modal = await this.modalCtrl.create({
       component: WeatherDetailsComponent,
       componentProps: {
-        WeatherDetails: this.weather.details,
+        weatherDetails: this.weather.details,
       },
     });
     modal.present();

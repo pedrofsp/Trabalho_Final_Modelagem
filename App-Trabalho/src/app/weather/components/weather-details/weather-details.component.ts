@@ -8,11 +8,12 @@ import { WeatherDetails } from 'src/domain/entities/weather-details';
   styleUrls: ['./weather-details.component.scss'],
 })
 export class WeatherDetailsComponent implements OnInit {
-  @Input() WeatherDetails: WeatherDetails[];
+  @Input() weatherDetails: WeatherDetails[];
 
   daysAfterToday(days: number) {
     const today = new Date();
-    return new Date(today.getTime() + days + 1000 * 60 * 60 * 24);
+    const milisecondsInADay = days * 1000 * 60 * 60 * 24;
+    return new Date(today.getTime() + milisecondsInADay);
   }
 
   constructor(private readonly modalCrtl: ModalController) {}

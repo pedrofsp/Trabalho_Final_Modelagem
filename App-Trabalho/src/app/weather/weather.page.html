@@ -7,12 +7,12 @@
 </ion-header>
 
 <ion-content>
-  <ion-grid>
+  <ion-grid *ngIf="weather">
     <ion-row class="ion-align-items-center">
       <ion-col class="ion-text-center">
         <p>{{weather.city.name}} | {{currentDate}}</p>
         <div class="temperature">
-          {{weather.currentTemp}<sup><small>ºC</small></sup>
+          {{weather.currentTemp}}<sup><small>ºC</small></sup>
         </div>
         <div class="condition">
           <img src="assets/tempestade.png" alt="" />
