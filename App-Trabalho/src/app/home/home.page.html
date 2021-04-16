@@ -23,6 +23,9 @@
           ></app-city-details>
         </ion-list>
         <ion-text color="primary" *ngIf="hasError">
+          <app-error-message
+            message="Cidade não encontrada"
+          ></app-error-message>
           <h6>{{errorMessage}}</h6>
         </ion-text>
       </ion-col>
