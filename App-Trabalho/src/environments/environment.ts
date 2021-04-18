@@ -2,8 +2,11 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+import { OPEN_WEATHER_CONFIG } from './api-config';
+
 export const environment = {
-  production: false
+  production: false,
+  api_config: OPEN_WEATHER_CONFIG,
 };
 
 /*
