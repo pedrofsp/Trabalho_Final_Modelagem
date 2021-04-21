@@ -1,5 +1,5 @@
-import { CityRepository } from 'src/domain/services/protocols/city-repository';
 import { City } from 'src/domain/entities/city';
+import { CityRepository } from 'src/domain/services/protocols/city-repository';
 import { cities } from './data-source/br-cities';
 
 export class LocalCityRepository extends CityRepository {
@@ -14,7 +14,7 @@ export class LocalCityRepository extends CityRepository {
   private toEntity(data: any): City {
     if (data) {
       return {
-        id: data.codigo_ibge,
+        id: data.id,
         name: data.nome,
         state: data.estado,
         coord: {

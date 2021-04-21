@@ -12,10 +12,6 @@ export class ApiWeatherRepository extends WeatherRepository {
   }
 
   async load(coord: Coordinate): Promise<Weather> {
-    alert(
-      'chamou load,' +
-        `${environment.api_config.api_icon_url} + ${environment.api_config.api_key} + ${environment.api_config.api_url}`
-    );
     return this.http
       .get(
         `${environment.api_config.api_url}?lat=${coord.latitude}&lon=${coord.longitude}&exclude=minutely,hourly,alerts&lang=pt_br&units=metric&appid=${environment.api_config.api_key}`
