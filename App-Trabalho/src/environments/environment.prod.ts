@@ -1,3 +1,10 @@
+// export const environment = {
+//   production: true
+// };
+
+import { OPEN_WEATHER_CONFIG } from './api-config';
+
 export const environment = {
-  production: true
+  production: true,
+  api_config: OPEN_WEATHER_CONFIG,
 };

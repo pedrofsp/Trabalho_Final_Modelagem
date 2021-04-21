@@ -3,7 +3,8 @@ import { Coordinate } from 'src/domain/entities/coodinate';
 import { Weather } from 'src/domain/entities/weather';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { map } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
+import { throwError } from 'rxjs';
 
 export class ApiWeatherRepository extends WeatherRepository {
   constructor(private readonly http: HttpClient) {
@@ -11,11 +12,18 @@ export class ApiWeatherRepository extends WeatherRepository {
   }
 
   async load(coord: Coordinate): Promise<Weather> {
+    alert(
+      'chamou load,' +
+        `${environment.api_config.api_icon_url} + ${environment.api_config.api_key} + ${environment.api_config.api_url}`
+    );
     return this.http
       .get(
-        `${environment.api_config.api_url}?lat=${coord.latitude}&lon=${coord.longitude}&exclude=minutely.alerts&lang=pt_br&units=metric&appid=${environment.api_config.api_key}`
+        `${environment.api_config.api_url}?lat=${coord.latitude}&lon=${coord.longitude}&exclude=minutely,hourly,alerts&lang=pt_br&units=metric&appid=${environment.api_config.api_key}`
       )
-      .pipe(map(this.toEntity))
+      .pipe(
+        map(this.toEntity)
+        /*catchError((error) => throwError(new UnavailableServiceError()))*/
+      )
       .toPromise();
   }
 
@@ -25,7 +33,7 @@ export class ApiWeatherRepository extends WeatherRepository {
     }
     const numOfDailyWeather = 3;
     const weather: Weather = {
-      currentTemp: data.currentTemp,
+      currentTemp: data.current.temp,
       details: [],
     };
 
