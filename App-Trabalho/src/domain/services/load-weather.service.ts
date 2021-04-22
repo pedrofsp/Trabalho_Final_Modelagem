@@ -10,7 +10,13 @@ export class LoadWeatherService {
     private readonly weatherRepo: WeatherRepository
   ) {}
 
+  private delay(ms: number) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
+
   async loadByCity(cityId: number): Promise<Weather> {
+    await this.delay(500);
+
     const city: City = await this.cityRepo.getById(cityId);
 
     if (!city) {

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { ModalController, LoadingController } from '@ionic/angular';
 import { WeatherDetailsComponent } from './components/weather-details/weather-details.component';
 import { Weather } from 'src/domain/entities/weather';
 import { ActivatedRoute } from '@angular/router';
@@ -22,7 +22,8 @@ export class WeatherPage {
   constructor(
     private readonly modalCtrl: ModalController,
     private readonly activatedRoute: ActivatedRoute,
-    private readonly weatherService: LoadWeatherService
+    private readonly weatherService: LoadWeatherService,
+    private readonly loadingCrtl: LoadingController
   ) {}
 
   ionViewDidEnter() {
@@ -47,13 +48,24 @@ export class WeatherPage {
     return `${weekDays[today.getDay()]}, ${day}/${month}`;
   }
 
+  private async presentLoading() {
+    (
+      await this.loadingCrtl.create({
+        message: 'Aguarde...',
+      })
+    ).present();
+  }
+
   async loadWeather(cityId: number) {
     try {
+      await this.presentLoading();
       this.hasError = false;
       this.weather = await this.weatherService.loadByCity(cityId);
     } catch (error) {
       this.hasError = true;
       this.errorMessage = error.message;
+    } finally {
+      await this.loadingCrtl.dismiss();
     }
   }
 
