@@ -6,9 +6,10 @@ import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';
 import { CityDetailsComponent } from './components/city-details/city-details.component';
+import { ButtonGeolocationComponent } from './components/button-geolocation/button-geolocation.component';
 
 @NgModule({
   imports: [CommonModule, FormsModule, IonicModule, HomePageRoutingModule],
-  declarations: [HomePage, CityDetailsComponent],
+  declarations: [HomePage, CityDetailsComponent, ButtonGeolocationComponent],
 })
 export class HomePageModule {}

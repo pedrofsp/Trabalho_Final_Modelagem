@@ -13,6 +13,7 @@ import { LoadWeatherService } from 'src/domain/services/load-weather.service';
 import { LocalCityRepository } from 'src/data/local-city-repository';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ApiWeatherRepository } from 'src/data/api-weather-repository';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
 
 const createSearchCityService = () => {
   return new SearchCityService(new LocalCityRepository());
@@ -42,6 +43,7 @@ const createLoadWeatherService = (http: HttpClient) => {
       useFactory: createLoadWeatherService,
       deps: [HttpClient],
     },
+    Geolocation,
   ],
   bootstrap: [AppComponent],
 })
