@@ -36,8 +36,7 @@ export class ButtonGeolocationComponent implements OnInit {
         lat1,
         lat2,
         cities[i].latitude,
-        cities[i].longitude,
-        false
+        cities[i].longitude
       );
       if (dist < smallestDist) {
         smallestDist = dist;
@@ -48,7 +47,7 @@ export class ButtonGeolocationComponent implements OnInit {
     this.router.navigateByUrl(`/weather/${idCidade}`);
   }
 
-  haversineDistance(lat1, lon1, lat2, lon2, isMiles) {
+  haversineDistance(lat1, lon1, lat2, lon2) {
     var R = 6371; // km
 
     var x1 = lat2 - lat1;
@@ -63,8 +62,6 @@ export class ButtonGeolocationComponent implements OnInit {
         Math.sin(dLon / 2);
     var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
     var d = R * c;
-
-    if (isMiles) d /= 1.60934;
 
     return d;
   }

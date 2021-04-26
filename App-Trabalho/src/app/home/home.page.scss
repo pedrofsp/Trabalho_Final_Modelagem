@@ -7,6 +7,7 @@ ion-title {
 ion-searchbar {
   --box-shadow: none;
   border-bottom: solid 1px var(--ion-color-light);
+  flex: 1.5;
 }
 
 h6 {
@@ -15,4 +16,12 @@ h6 {
 
 .button {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 0.5vh;
+}
+
+.flexBoxSearch {
+  display: flex;
 }

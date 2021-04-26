@@ -15,9 +15,14 @@
           {{weather.currentTemp}}<sup><small>ºC</small></sup>
         </div>
         <div class="condition">
-          <img src="assets/tempestade.png" alt="" />
+          <img src="{{getImageUrl(weather.details[0].condition)}}" alt="" />
           <h3>{{weather.details[0].condition}}</h3>
-          <p>{{weather.details[0].pop}}% | {{weather.details[0].humidity}}%</p>
+          <p>
+            <ion-icon name="cloud-download-outline"></ion-icon
+            >{{weather.details[0].pop}}% |
+            <ion-icon name="cloud-download-outline"></ion-icon>
+            {{weather.details[0].humidity}}%
+          </p>
         </div>
         <ion-button color="success" (click)="onSeeDetails()"
           >Ver Detalhes</ion-button

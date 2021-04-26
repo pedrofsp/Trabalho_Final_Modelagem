@@ -15,6 +15,7 @@ import { error } from 'protractor';
 export class WeatherPage {
   weather: Weather;
   today = new Date();
+  //imgUrl = this.getImageUrl();
 
   hasError: boolean = false;
   errorMessage: string;
@@ -78,26 +79,31 @@ export class WeatherPage {
     });
     modal.present();
   }
-}
 
-/*import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
-import { WeatherDetailsComponent } from './components/weather-details/weather-details.component';
+  public getImageUrl(condition) {
+    if (condition == 'algumas nuvens') {
+      return 'assets/AlgumasNuvens.png';
+    }
+    if (condition == 'tempestade') {
+      return 'assets/Tempestade.png';
+    }
+    if (condition == 'chuva moderada') {
+      return 'assets/ChuvaModerada.png';
+    }
+    if (condition == 'nuvens dispersas') {
+      return 'assets/NuvensDispersas.png';
+    }
+    if (condition == 'chuva leve') {
+      return 'assets/ChuvaModerada.png';
+    }
+    if (condition == 'nublado') {
+      return 'assets/Nublado.png';
+    }
+    if (condition == 'céu limpo') {
+      return 'assets/CeuLimpo.png';
+    }
+    console.log(condition);
 
-@Component({
-  selector: 'app-weather',
-  templateUrl: './weather.page.html',
-  styleUrls: ['./weather.page.scss'],
-})
-export class WeatherPage implements OnInit {
-  constructor(private readonly modalCtrl: ModalController) {}
-
-  ngOnInit() {}
-
-  async onSeeDetails() {
-    const modal = await this.modalCtrl.create({
-      component: WeatherDetailsComponent,
-    });
-    modal.present();
+    return 'assets/AlgumasNuvens.png';
   }
-}*/
+}

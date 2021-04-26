@@ -13,11 +13,11 @@
   <ion-grid *ngIf="weatherDetails">
     <ion-row *ngFor="let weather of weatherDetails; let i = index">
       <ion-col class="ion-text-center">
-        <img src="assets/tempestade.png" alt="" />
+        <img src="{{ getImageUrl(weather.condition) }}" alt="" />
       </ion-col>
       <ion-col class="ion-text-center">
         <p>
-          <strong>{{ daysAfterToday(i) | date:"dd/MM" }}</strong
+          <strong>{{ daysAfterToday(i) | date: "dd/MM" }}</strong
           ><br /><small>{{ weather.condition }}</small>
         </p>
       </ion-col>
@@ -29,8 +29,10 @@
       </ion-col>
       <ion-col class="ion-text-center">
         <p>
-          {{ weather.pop }}% <br />
-          {{ weather.humidity }}%
+          <ion-icon name="cloud-download-outline"></ion-icon>{{ weather.pop }}%
+          <br />
+          <ion-icon name="cloud-upload-outline"></ion-icon
+          >{{ weather.humidity }}%
         </p>
       </ion-col>
     </ion-row>
